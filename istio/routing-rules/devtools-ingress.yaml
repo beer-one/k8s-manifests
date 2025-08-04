@@ -2,22 +2,22 @@ apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: devtools-ingress
-  namespace: argocd
+  namespace: istio-system
 spec:
   hosts:
   - "*.beer1.com"
   gateways:
-  - beer1-com.istio-system
+  - beer1-com
   http:
-  - name: argocd
-    match:
-      - authority:
-          exact: argocd.beer1.com
-    route:
-    - destination:
-        host: argocd-server.argocd.svc.cluster.local
-        port: 
-          number: 80
+  # - name: argocd
+  #   match:
+  #     - authority:
+  #         exact: argocd.beer1.com
+  #   route:
+  #   - destination:
+  #       host: argocd-server.argocd.svc.cluster.local
+  #       port: 
+  #         number: 80
   - name: prometheus
     match:
       - authority:

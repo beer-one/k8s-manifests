@@ -1,7 +1,5 @@
 ingress:
-  enabled: true
-  hosts:
-    - "grafana.beer1.com"
+  enabled: false
 
 resources: 
   limits:
@@ -12,9 +10,11 @@ resources:
 
 persistence:
   enabled: true
-  existingClaim: grafana
-  size: 8Gi
-
+  storageClass: hostpath
+  size: 10Gi
+admin:
+  ## Name of the secret. Can be templated.
+  existingSecret: "grafana-admin-credentials"
 datasources: 
   datasources.yaml:
     apiVersion: 1
@@ -24,39 +24,3 @@ datasources:
       url: http://prometheus-server
       access: proxy
       isDefault: true
-
-extraObjects: 
-  - |
-    apiVersion: v1
-    kind: PersistentVolume
-    metadata:
-      name: grafana
-    spec:
-      capacity:
-        storage: 8Gi
-      volumeMode: Filesystem
-      accessModes:
-      - ReadWriteOnce
-      storageClassName: local-storage
-      local:
-        path: /mnt/grafana
-      nodeAffinity:
-        required:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-              - k8s-wn2
-  - |
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: grafana
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      storageClassName: local-storage
-      resources:
-        requests:
-          storage: 8Gi
