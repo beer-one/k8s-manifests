@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jvm-test
+  namespace: cicd
+spec:
+  sources:
+    - repoURL: 'https://beer-one.github.io/charts'
+      targetRevision: 0.1.2
+      chart: spring-app
+      helm:
+        releaseName: jvm-test
+        valueFiles:
+          - $values/test/jvm-test.yaml
+    - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+      targetRevision: main
+      ref: values
+  destination:
+    name: ''
+    namespace: test
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,33 @@
+app:
+  name: jvm-test
+  replicas: 1
+  image: beer1/jvm-test:dev
+  port: 8080
+  resources:
+    requests: 
+      cpu: "0.1"
+      memory: 500Mi
+    limits:
+      cpu: "1"
+      memory: 500Mi
+  
+podLabels:
+  tier: backend
+  test: test
+
+probes:
+  readiness:
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 10
+    periodSeconds: 10
+  liveness: 
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 120
+    periodSeconds: 10
+
+service:
+  enabled: true
