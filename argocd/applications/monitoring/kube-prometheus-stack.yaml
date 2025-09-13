@@ -5,7 +5,8 @@ metadata:
   namespace: cicd
 spec:
   sources:
-    - repoURL: 'oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack'
+    - repoURL: "https://prometheus-community.github.io/helm-charts"
+      chart: kube-prometheus-stack
       targetRevision: 77.6.2
       helm:
         releaseName: prometheus
