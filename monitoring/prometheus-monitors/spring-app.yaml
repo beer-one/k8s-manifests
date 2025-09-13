@@ -7,6 +7,8 @@ spec:
   podMetricsEndpoints:
   - path: /actuator/prometheus
     port: http
+  namespaceSelector:
+    any: true
   selector:
     matchLabels:
       prometheus.io/monitor-target: "spring-app"
