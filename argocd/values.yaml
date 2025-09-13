@@ -15,3 +15,35 @@ applicationSet:
 configs:
   params:
     server.insecure: true
+
+repositories:
+  my-manifest:
+    url: https://https://github.com/beer-one/k8s-manifests.git
+    name: my-manifest
+    type: git
+
+extraObjects:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: root-application
+      namespace: cicd
+    spec:
+      source:
+        # Application이 저장된 경로
+        path: argocd/applications
+        
+        # Application이 저장된 매니페스트 파일
+        repoURL: https://github.com/beer-one/k8s-manifest
+        targetRevision: HEAD
+        directory:
+          recurse: true # 경로 하위의 Application 모두 등록
+      destination:
+        name: ''
+        namespace: 'cicd'
+        server: https://kubernetes.default.svc
+      project: 'default'
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
