@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: test-app
+  namespace: istio-system
+spec:
+  hosts:
+  - "test-app.beer1.com"
+  gateways:
+  - beer1-com
+  http:
+  - route:
+    - destination:
+        host: jvm-test.test.svc.cluster.local
+        port: 
+          number: 80
