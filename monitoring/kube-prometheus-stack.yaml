@@ -13,7 +13,7 @@ prometheusOperator:
 prometheus:
   enabled: true
   prometheusSpec:
-    retentionSize: "15Gi"
+    retentionSize: "15GiB"
     storageSpec: 
      volumeClaimTemplate:
        spec:
