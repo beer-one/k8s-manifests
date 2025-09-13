@@ -89,3 +89,7 @@ kubeStateMetrics:
 ##
 nodeExporter:
   enabled: true
+  
+prometheus-node-exporter:
+  hostRootFsMount:
+    enabled: false
