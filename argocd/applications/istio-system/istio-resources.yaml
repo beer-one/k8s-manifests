@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: istio-resources
-  namespace: argocd
+  namespace: cicd
 spec:
   sources:
     - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
