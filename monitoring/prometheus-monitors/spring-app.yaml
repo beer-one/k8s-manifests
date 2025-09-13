@@ -4,7 +4,7 @@ metadata:
   name: spring-app
   namespace: monitoring
 spec:
-  endpoints:
+  podMetricsEndpoints:
   - path: /actuator/prometheus
     port: http
   selector:
