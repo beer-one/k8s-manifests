@@ -12,6 +12,17 @@ prometheusOperator:
 ##
 prometheus:
   enabled: true
+  prometheusSpec:
+    retentionSize: "15Gi"
+    storageSpec: 
+     volumeClaimTemplate:
+       spec:
+         storageClassName: hostpath
+         accessModes: ["ReadWriteOnce"]
+         resources:
+           requests:
+             storage: 20Gi
+         selector: {}
 
 ## Create default rules for monitoring the cluster
 ##
@@ -89,7 +100,7 @@ kubeStateMetrics:
 ##
 nodeExporter:
   enabled: true
-  
+
 prometheus-node-exporter:
   hostRootFsMount:
     enabled: false
