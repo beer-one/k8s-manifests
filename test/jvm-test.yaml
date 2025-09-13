@@ -14,6 +14,7 @@ app:
 podLabels:
   tier: backend
   test: test
+  prometheus.io/monitor-target: "spring-app"
 
 probes:
   readiness:

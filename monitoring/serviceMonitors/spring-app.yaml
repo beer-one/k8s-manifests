@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: spring-app
+  namespace: test
+spec:
+  endpoints:
+  - path: /actuator/prometheus
+    port: http
+  selector:
+    matchLabels:
+      prometheus.io/monitor-target: "spring-app"
