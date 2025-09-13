@@ -1,15 +1,14 @@
-revision: "1-24-3"
+revision: "1-27-1"
 
 # istiod 리소스 설정
-pilot:
-  autoscaleMin: 1
-  autoscaleMax: 2
-  resources:
-    requests:
-      cpu: 100m
-      memory: 256Mi
-    limits:
-      memory: 256Mi
+autoscaleMin: 1
+autoscaleMax: 2
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    memory: 256Mi
 meshConfig:
   accessLogFile: /dev/stdout
 
