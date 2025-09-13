@@ -12,6 +12,8 @@ persistence:
   enabled: true
   storageClass: hostpath
   size: 10Gi
+initChownData:
+  enabled: false
 admin:
   ## Name of the secret. Can be templated.
   existingSecret: "grafana-admin-credentials"
