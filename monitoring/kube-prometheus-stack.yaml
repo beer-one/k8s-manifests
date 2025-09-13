@@ -1,0 +1,91 @@
+## Install Prometheus Operator CRDs
+##
+crds:
+  enabled: true
+
+## Manages Prometheus and Alertmanager components
+##
+prometheusOperator:
+  enabled: true
+
+## Deploy a Prometheus instance
+##
+prometheus:
+  enabled: true
+
+## Create default rules for monitoring the cluster
+##
+defaultRules:
+  create: false
+
+## Provide custom recording or alerting rules to be deployed into the cluster.
+##
+additionalPrometheusRulesMap: {}
+#  rule-name:
+#    groups:
+#    - name: my_group
+#      rules:
+#      - record: my_record
+#        expr: 100 * my_record
+
+## Configuration for alertmanager
+## ref: https://prometheus.io/docs/alerting/alertmanager/
+##
+alertmanager:
+  enabled: false
+
+## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+##
+grafana:
+  enabled: false
+
+## Flag to disable all the kubernetes component scrapers
+##
+kubernetesServiceMonitors:
+  enabled: true
+
+## Component scraping the kube api server
+##
+kubeApiServer:
+  enabled: false
+
+## Component scraping the kubelet and kubelet-hosted cAdvisor
+##
+kubelet:
+  enabled: false
+
+## Component scraping the kube controller manager
+##
+kubeControllerManager:
+  enabled: false
+
+## Component scraping coreDns. Use either this or kubeDns
+##
+coreDns:
+  enabled: false
+
+## Component scraping etcd
+##
+kubeEtcd:
+  enabled: false
+
+## Component scraping kube scheduler
+##
+kubeScheduler:
+  enabled: false
+
+
+## Component scraping kube proxy
+##
+kubeProxy:
+  enabled: false
+
+## Component scraping kube state metrics
+##
+kubeStateMetrics:
+  enabled: true
+
+## Deploy node exporter as a daemonset to all nodes
+##
+nodeExporter:
+  enabled: true
