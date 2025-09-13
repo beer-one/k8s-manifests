@@ -9,15 +9,15 @@ spec:
   gateways:
   - beer1-com
   http:
-  # - name: argocd
-  #   match:
-  #     - authority:
-  #         exact: argocd.beer1.com
-  #   route:
-  #   - destination:
-  #       host: argocd-server.argocd.svc.cluster.local
-  #       port: 
-  #         number: 80
+  - name: argocd
+    match:
+      - authority:
+          exact: argocd.beer1.com
+    route:
+    - destination:
+        host: argocd-server.cicd.svc.cluster.local
+        port: 
+          number: 80
   - name: prometheus
     match:
       - authority:
