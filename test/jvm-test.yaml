@@ -14,11 +14,11 @@ app:
     - name: JAVA_TOOL_OPTIONS
       value: |
         -XX:+AlwaysPreTouch -XX:+ExitOnOutOfMemoryError
-        -XX:InitialRAMPercentage=20 -XX:MinRAMPercentage=20 -XX:MaxRAMPercentage=20
+        -XX:InitialRAMPercentage=50 -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=50
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
         -XX:ReservedCodeCacheSize=48m -XX:+UseG1GC
     - name: QUEUE_SIZE
-      value: "8192"
+      value: "32768"
         
   
 podLabels:
