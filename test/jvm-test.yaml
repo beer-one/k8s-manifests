@@ -17,6 +17,8 @@ app:
         -XX:InitialRAMPercentage=50 -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=50
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
         -XX:ReservedCodeCacheSize=48m -XX:+UseG1GC
+    - name: QUEUE_SIZE
+      value: "40"
         
   
 podLabels:
