@@ -16,7 +16,7 @@ app:
         -XX:+AlwaysPreTouch -XX:+ExitOnOutOfMemoryError
         -XX:InitialRAMPercentage=10 -XX:MinRAMPercentage=10 -XX:MaxRAMPercentage=10
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
-        -XX:ReservedCodeCacheSize=48m -XX:+UseSerialGC
+        -XX:ReservedCodeCacheSize=48m -XX:+UseParallelGC
     - name: QUEUE_SIZE
       value: "32768"
         
