@@ -18,7 +18,7 @@ app:
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
         -XX:+UseParallelGC
     - name: QUEUE_SIZE
-      value: "32768"
+      value: "262144"
         
   
 podLabels:
