@@ -14,7 +14,7 @@ app:
     - name: JAVA_TOOL_OPTIONS
       value: |
         -XX:+AlwaysPreTouch -XX:+ExitOnOutOfMemoryError
-        -XX:InitialRAMPercentage=25 -XX:MinRAMPercentage=25 -XX:MaxRAMPercentage=25
+        -XX:InitialRAMPercentage=50 -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=50
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
         -XX:+UseParallelGC
     - name: QUEUE_SIZE
