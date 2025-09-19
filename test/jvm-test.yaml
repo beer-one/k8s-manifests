@@ -6,20 +6,19 @@ app:
   resources:
     requests: 
       cpu: "0.5"
-      memory: 1Gi
+      memory: 2Gi
     limits:
 
-      memory: 1Gi
+      memory: 2Gi
   env:
     - name: JAVA_TOOL_OPTIONS
       value: |
         -XX:+AlwaysPreTouch -XX:+ExitOnOutOfMemoryError
-        -XX:InitialRAMPercentage=50 -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=50
+        -XX:InitialRAMPercentage=25 -XX:MinRAMPercentage=25 -XX:MaxRAMPercentage=25
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
-        -XX:+UseSerialGC
+        -XX:+UseParallelGC
     - name: QUEUE_SIZE
       value: "262144"
-        
   
 podLabels:
   tier: backend
