@@ -1,0 +1,29 @@
+controller:
+  ## @param controller.replicaCount Number of Kafka controller-eligible nodes
+  ##
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 512Mi
+    limits:
+      memory: 512Mi
+  
+  persistence:
+    enabled: true
+    storageClass: hostpath
+    size: 10Gi
+
+provisioning:
+  topics:
+    - CHECK-PRODUCT
+    - APPLY-PAYMENT
+    - CHECK-PRODUCT-COMPLETED
+    - CHECK-PRODUCT-FAILED
+    - PAYMENT-COMPLETED
+    - PAYMENT-FAILED
+    - PRODUCT-ROLLBACK
+    - ORDER-CREATED
+    - ORDER-ROLLBACKED
+    - ORDER-FAILED
+    - ORDER-COMPLETED

@@ -1,0 +1,54 @@
+app:
+  replicas: 1
+  image: beer1/saga-example-order-service:dev
+  port: 6010
+  resources:
+    requests: 
+      cpu: "0.5"
+      memory: 1Gi
+    limits:
+      memory: 1Gi
+  env:
+    - name: JAVA_TOOL_OPTIONS
+      value: |
+        -XX:+AlwaysPreTouch -XX:+ExitOnOutOfMemoryError
+        -XX:InitialRAMPercentage=50 -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=50
+        -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
+        -XX:+UseParallelGC
+    - name: SPRING_JPA_GENERATE_DDL
+      value: true
+    - name: SPRING_DATASOURCE_URL
+      value: jdbc:mysql://mysql.middleware.svc.cluster.local:3306/saga_order?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    - name: SPRING_DATASOURCE_USERNAME
+      valueFrom: 
+        secretKeyRef:
+          name: mysql-credentials
+          key: username
+    - name: SPRING_DATASOURCE_PASSWORD
+      valueFrom: 
+        secretKeyRef:
+          name: mysql-credentials
+          key: password
+      value: 
+    - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+      value: kafka.middleware.svc.cluster.local:9092
+podLabels:
+  tier: backend
+  prometheus.io/monitor-target: "spring-app"
+
+probes:
+  readiness:
+    httpGet:
+      path: /actuator/health/readiness
+      port: 6010
+    initialDelaySeconds: 10
+    periodSeconds: 10
+  liveness: 
+    httpGet:
+      path: /actuator/health/liveness
+      port: 6010
+    initialDelaySeconds: 120
+    periodSeconds: 10
+
+service:
+  enabled: true

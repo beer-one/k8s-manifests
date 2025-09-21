@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka
+  namespace: cicd
+spec:
+  sources:
+    - repoURL: 'oci://registry-1.docker.io/bitnamicharts/mysql'
+      targetRevision: 32.4.3
+      helm:
+        releaseName: kafka
+        valueFiles:
+          - $values/middleware/kafka.yaml
+    - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+      targetRevision: main
+      ref: values
+  destination:
+    name: ''
+    namespace: middleware
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

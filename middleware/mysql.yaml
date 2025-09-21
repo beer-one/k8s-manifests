@@ -1,0 +1,32 @@
+# bitnaml/mysql 12.3.5
+architecture: standalone
+
+## @param initdbScripts Dictionary of initdb scripts
+## Specify dictionary of scripts to be run at first boot
+## Example:
+initdbScripts:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS saga_account;
+    CREATE DATABASE IF NOT EXISTS saga_order;
+    CREATE DATABASE IF NOT EXISTS saga_product;
+
+    CREATE USER 'saga-tester'@'%' IDENTIFIED BY 'sagatest';
+    GRANT ALL PRIVILEGES ON saga_account.* TO 'saga-tester'@'%';
+    GRANT ALL PRIVILEGES ON saga_order.* TO 'saga-tester'@'%';
+    GRANT ALL PRIVILEGES ON saga_product.* TO 'saga-tester'@'%';
+    FLUSH PRIVILEGES;
+
+## @section MySQL Primary parameters
+##
+primary:
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 1024Mi
+    limits:
+      memory: 1024Mi
+  
+  persistence:
+    enabled: true
+    storageClass: hostpath
+    size: 10Gi
