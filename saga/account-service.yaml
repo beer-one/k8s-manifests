@@ -13,7 +13,7 @@ app:
       value: |
         -XX:+AlwaysPreTouch -XX:+ExitOnOutOfMemoryError
         -XX:InitialRAMPercentage=50 -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=50
-        -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
+        -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m
         -XX:+UseParallelGC
     - name: SPRING_JPA_GENERATE_DDL
       value: "true"
