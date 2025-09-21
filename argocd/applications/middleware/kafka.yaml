@@ -5,7 +5,7 @@ metadata:
   namespace: cicd
 spec:
   sources:
-    - repoURL: 'oci://registry-1.docker.io/bitnamicharts/mysql'
+    - repoURL: 'oci://registry-1.docker.io/bitnamicharts/kafka'
       path: .
       targetRevision: 32.4.3
       helm:
