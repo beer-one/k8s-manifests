@@ -6,6 +6,7 @@ metadata:
 spec:
   sources:
     - repoURL: 'oci://registry-1.docker.io/bitnamicharts/mysql'
+      path: .
       targetRevision: 32.4.3
       helm:
         releaseName: kafka
