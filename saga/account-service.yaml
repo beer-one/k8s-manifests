@@ -16,7 +16,7 @@ app:
         -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m
         -XX:+UseParallelGC
     - name: SPRING_JPA_GENERATE_DDL
-      value: true
+      value: "true"
     - name: SPRING_DATASOURCE_URL
       value: jdbc:mysql://mysql.middleware.svc.cluster.local:3306/saga_account?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
     - name: SPRING_DATASOURCE_USERNAME
