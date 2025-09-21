@@ -25,6 +25,7 @@ controller:
     size: 10Gi
 
 provisioning:
+  enabled: true
   topics:
     - CHECK-PRODUCT
     - APPLY-PAYMENT
