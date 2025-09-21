@@ -25,6 +25,10 @@ primary:
       memory: 1024Mi
     limits:
       memory: 1024Mi
+  containerSecurityContext:
+    seccompProfile:
+      type: "Unconfined"
+    
   
   persistence:
     enabled: true
