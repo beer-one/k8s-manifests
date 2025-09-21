@@ -4,7 +4,7 @@ metadata:
   name: saga-msa
   namespace: cicd
 spec:
-  generator:
+  generators:
     - list:
         elements:
           - app: account-service 
