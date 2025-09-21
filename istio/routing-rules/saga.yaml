@@ -1,0 +1,38 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: prometheus
+  namespace: istio-system
+spec:
+  hosts:
+  - saga.beer1.com
+  gateways:
+  - beer1-com
+  http:
+  - name: account
+    match:
+      - uri:
+          prefix: "/accounts"
+    route:
+    - destination:
+        host: account-service.saga.svc.cluster.local
+        port: 
+          number: 80
+  - name: product
+    match:
+      - uri:
+          prefix: "/products"
+    route:
+    - destination:
+        host: product-service.saga.svc.cluster.local
+        port: 
+          number: 80
+  - name: order
+    match:
+      - uri:
+          prefix: "/order"
+    route:
+    - destination:
+        host: order-service.saga.svc.cluster.local
+        port: 
+          number: 80

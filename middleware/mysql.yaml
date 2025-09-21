@@ -34,3 +34,6 @@ primary:
     enabled: true
     storageClass: hostpath
     size: 10Gi
+
+image:
+   debug: true
