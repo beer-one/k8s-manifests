@@ -1,15 +1,14 @@
 app:
   name: jvm-test
-  replicas: 1
+  replicas: 0
   image: beer1/jvm-test:dev
   port: 8080
   resources:
     requests: 
       cpu: "0.5"
-      memory: 2Gi
+      memory: 512Mi
     limits:
-
-      memory: 2Gi
+      memory: 512Mi
   env:
     - name: JAVA_TOOL_OPTIONS
       value: |

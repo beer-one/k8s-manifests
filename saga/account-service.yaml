@@ -4,10 +4,10 @@ app:
   port: 6000
   resources:
     requests: 
-      cpu: "0.5"
-      memory: 1Gi
+      cpu: "0.1"
+      memory: 512Mi
     limits:
-      memory: 1Gi
+      memory: 512Mi
   env:
     - name: JAVA_TOOL_OPTIONS
       value: |
