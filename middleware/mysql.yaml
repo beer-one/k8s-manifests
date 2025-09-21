@@ -1,6 +1,8 @@
 # bitnaml/mysql 12.3.5
 architecture: standalone
 
+auth:
+  existingSecret: mysql-credentials
 ## @param initdbScripts Dictionary of initdb scripts
 ## Specify dictionary of scripts to be run at first boot
 ## Example:
