@@ -27,14 +27,59 @@ controller:
 provisioning:
   enabled: true
   topics:
-    - CHECK-PRODUCT
-    - APPLY-PAYMENT
-    - CHECK-PRODUCT-COMPLETED
-    - CHECK-PRODUCT-FAILED
-    - PAYMENT-COMPLETED
-    - PAYMENT-FAILED
-    - PRODUCT-ROLLBACK
-    - ORDER-CREATED
-    - ORDER-ROLLBACKED
-    - ORDER-FAILED
-    - ORDER-COMPLETED
+    - name: CHECK-PRODUCT
+      partitions: 1
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: APPLY-PAYMENT
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: CHECK-PRODUCT-COMPLETED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: CHECK-PRODUCT-FAILED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: PAYMENT-COMPLETED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: PAYMENT-FAILED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: PRODUCT-ROLLBACK
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: ORDER-CREATED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: ORDER-ROLLBACKED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: ORDER-FAILED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
+    - name: ORDER-COMPLETED
+      replicationFactor: 1
+      config:
+        flush.messages: 1
+        max.message.bytes: 64000
