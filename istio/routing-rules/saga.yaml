@@ -30,7 +30,7 @@ spec:
   - name: order
     match:
       - uri:
-          prefix: "/order"
+          prefix: "/orders"
     route:
     - destination:
         host: order-service.saga.svc.cluster.local

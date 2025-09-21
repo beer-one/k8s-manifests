@@ -1,3 +1,13 @@
+listeners:
+  client:
+    protocol: PLAINTEXT
+  controller:
+    protocol: PLAINTEXT
+  interbroker:
+    protocol: PLAINTEXT
+  external:
+    protocol: PLAINTEXT
+
 controller:
   ## @param controller.replicaCount Number of Kafka controller-eligible nodes
   ##
