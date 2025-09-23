@@ -73,7 +73,7 @@ kubeControllerManager:
 ## Component scraping coreDns. Use either this or kubeDns
 ##
 coreDns:
-  enabled: false
+  enabled: true
 
 ## Component scraping etcd
 ##
