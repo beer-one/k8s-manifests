@@ -1,27 +1,27 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: mysql
-  namespace: cicd
-spec:
-  sources:
-    - repoURL: 'oci://registry-1.docker.io/bitnamicharts/mysql'
-      path: .
-      targetRevision: 12.3.5
-      helm:
-        releaseName: mysql
-        valueFiles:
-          - $values/middleware/mysql.yaml
-    - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
-      targetRevision: main
-      ref: values
-  destination:
-    name: ''
-    namespace: middleware
-    server: 'https://kubernetes.default.svc'
-  project: default
-  syncPolicy:
-    automated:
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: mysql
+#   namespace: cicd
+# spec:
+#   sources:
+#     - repoURL: 'oci://registry-1.docker.io/bitnamicharts/mysql'
+#       path: .
+#       targetRevision: 12.3.5
+#       helm:
+#         releaseName: mysql
+#         valueFiles:
+#           - $values/middleware/mysql.yaml
+#     - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+#       targetRevision: main
+#       ref: values
+#   destination:
+#     name: ''
+#     namespace: middleware
+#     server: 'https://kubernetes.default.svc'
+#   project: default
+#   syncPolicy:
+#     automated:
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true

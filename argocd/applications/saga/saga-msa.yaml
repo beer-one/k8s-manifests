@@ -1,43 +1,43 @@
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-metadata:
-  name: saga-msa
-  namespace: cicd
-spec:
-  generators:
-    - list:
-        elements:
-          - app: account-service 
-            version: 0.1.2
-          - app: order-service 
-            version: 0.1.2
-          - app: product-service 
-            version: 0.1.2
-          - app: order-orchestrator
-            version: 0.1.2
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: saga-msa
+#   namespace: cicd
+# spec:
+#   generators:
+#     - list:
+#         elements:
+#           - app: account-service 
+#             version: 0.1.2
+#           - app: order-service 
+#             version: 0.1.2
+#           - app: product-service 
+#             version: 0.1.2
+#           - app: order-orchestrator
+#             version: 0.1.2
 
-  template:
-    metadata:
-      name: "{{ app }}"
-    spec:
-      sources:
-        - repoURL: 'https://beer-one.github.io/charts'
-          targetRevision: "{{ version }}"
-          chart: spring-app
-          helm:
-            releaseName: "{{ app }}"
-            valueFiles:
-              - $values/saga/{{ app }}.yaml
-        - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
-          targetRevision: main
-          ref: values
-      destination:
-        name: ''
-        namespace: saga
-        server: 'https://kubernetes.default.svc'
-      project: default
-      syncPolicy:
-        automated:
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
+#   template:
+#     metadata:
+#       name: "{{ app }}"
+#     spec:
+#       sources:
+#         - repoURL: 'https://beer-one.github.io/charts'
+#           targetRevision: "{{ version }}"
+#           chart: spring-app
+#           helm:
+#             releaseName: "{{ app }}"
+#             valueFiles:
+#               - $values/saga/{{ app }}.yaml
+#         - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+#           targetRevision: main
+#           ref: values
+#       destination:
+#         name: ''
+#         namespace: saga
+#         server: 'https://kubernetes.default.svc'
+#       project: default
+#       syncPolicy:
+#         automated:
+#           selfHeal: true
+#         syncOptions:
+#           - CreateNamespace=true
