@@ -11,7 +11,7 @@ spec:
       helm:
         releaseName: ingressgateway
         valueFiles:
-          - $values/istio/chart/ingressgateway.yaml
+          - $values/istio-system/chart/ingressgateway.yaml
     - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
       targetRevision: main
       ref: values

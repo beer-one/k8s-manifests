@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-base
+  name: istiod-1-27-1
   namespace: cicd
 spec:
   sources:
     - repoURL: 'https://istio-release.storage.googleapis.com/charts'
       targetRevision: 1.27.1
-      chart: base
+      chart: istiod
       helm:
-        releaseName: istio-base
+        releaseName: istiod-1-27-1
         valueFiles:
-          - $values/istio/chart/base.yaml
+          - $values/istio-system/chart/istiod-1-27-1.yaml
     - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
       targetRevision: main
       ref: values
