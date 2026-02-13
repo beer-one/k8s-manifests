@@ -10,7 +10,6 @@ resources:
 
 persistence:
   enabled: true
-  storageClass: hostpath
   size: 10Gi
 initChownData:
   enabled: false

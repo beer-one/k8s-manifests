@@ -30,7 +30,6 @@ primary:
   
   persistence:
     enabled: true
-    storageClass: hostpath
     size: 10Gi
 
 image:
