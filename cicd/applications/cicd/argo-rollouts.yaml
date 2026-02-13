@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kafka
+  name: argo-rollouts
   namespace: cicd
 spec:
   sources:

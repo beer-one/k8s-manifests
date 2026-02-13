@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: istio
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - app: istiod-1-27-1
+        chart: istiod
+        revision: 1.27.1
+      - app: istio-base
+        chart: base
+        revision: 1.27.1
+      - app: ingressgateway
+        chart: gateway
+        revision: 1.27.1
+  template:
+    metadata:
+      name: 'istio-{{app}}'
+    spec:
+      project: default
+      sources:
+        - repoURL: 'https://istio-release.storage.googleapis.com/charts'
+          targetRevision: "{{ revision }}"
+          chart: "{{ chart }}"
+          helm:
+            releaseName: "{{ app }}"
+            valueFiles:
+              - $values/istio-system/chart/{{ app }}.yaml
+        - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+          targetRevision: main
+          ref: values
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: istio-system
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
