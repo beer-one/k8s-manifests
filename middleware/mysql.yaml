@@ -8,14 +8,10 @@ auth:
 ## Example:
 initdbScripts:
   init.sql: |
-    CREATE DATABASE IF NOT EXISTS saga_account;
-    CREATE DATABASE IF NOT EXISTS saga_order;
-    CREATE DATABASE IF NOT EXISTS saga_product;
+    CREATE DATABASE IF NOT EXISTS meal_calender;
 
-    CREATE USER 'saga-tester'@'%' IDENTIFIED BY 'sagatest';
-    GRANT ALL PRIVILEGES ON saga_account.* TO 'saga-tester'@'%';
-    GRANT ALL PRIVILEGES ON saga_order.* TO 'saga-tester'@'%';
-    GRANT ALL PRIVILEGES ON saga_product.* TO 'saga-tester'@'%';
+    CREATE USER 'meal_calender_dev'@'%' IDENTIFIED BY 'meal_calender_dev';
+    GRANT ALL PRIVILEGES ON meal_calender.* TO 'meal_calender_dev'@'%';
     FLUSH PRIVILEGES;
 
 ## @section MySQL Primary parameters
