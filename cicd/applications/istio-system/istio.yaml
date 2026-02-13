@@ -19,17 +19,17 @@ spec:
         revision: 1.27.1
   template:
     metadata:
-      name: 'istio-{{app}}'
+      name: 'istio-{{.app}}'
     spec:
       project: default
       sources:
         - repoURL: 'https://istio-release.storage.googleapis.com/charts'
-          targetRevision: "{{ revision }}"
-          chart: "{{ chart }}"
+          targetRevision: "{{ .revision }}"
+          chart: "{{ .chart }}"
           helm:
-            releaseName: "{{ app }}"
+            releaseName: "{{ .app }}"
             valueFiles:
-              - $values/istio-system/chart/{{ app }}.yaml
+              - $values/istio-system/chart/{{ .app }}.yaml
         - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
           targetRevision: main
           ref: values
