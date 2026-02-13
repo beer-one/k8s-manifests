@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: istio
+  name: istio-system
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -19,7 +19,7 @@ spec:
         revision: 1.27.1
   template:
     metadata:
-      name: 'istio-{{.app}}'
+      name: 'istio-system-{{.app}}'
     spec:
       project: default
       sources:
