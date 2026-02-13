@@ -1,6 +1,9 @@
 # bitnaml/mysql 12.3.5
 architecture: standalone
-
+image:
+  registry: docker.io
+  repository: bitnamilegacy/mysql
+  
 auth:
   existingSecret: mysql-credentials
 ## @param initdbScripts Dictionary of initdb scripts
@@ -30,6 +33,7 @@ primary:
   
   persistence:
     enabled: true
+    storageClass: standard
     size: 10Gi
 
 image:
