@@ -1,5 +1,8 @@
 # bitnaml/mysql 12.3.5
 architecture: standalone
+global:
+  security:
+    allowInsecureImages: true
 image:
   registry: docker.io
   repository: bitnamilegacy/mysql
