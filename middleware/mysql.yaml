@@ -35,6 +35,3 @@ primary:
     enabled: true
     storageClass: standard
     size: 10Gi
-
-image:
-   debug: true
