@@ -34,9 +34,7 @@ primary:
     seccompProfile:
       type: "Unconfined"
   service:
-    type: NodePort
-    nodePorts:
-      mysql: "30306"
+    type: LoadBalancer
     
   
   persistence:
