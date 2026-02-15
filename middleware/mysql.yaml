@@ -33,6 +33,10 @@ primary:
   containerSecurityContext:
     seccompProfile:
       type: "Unconfined"
+  service:
+    type: NodePort
+    nodePorts:
+      mysql: "30306"
     
   
   persistence:
