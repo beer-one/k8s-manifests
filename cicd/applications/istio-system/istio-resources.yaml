@@ -4,10 +4,13 @@ metadata:
   name: istio-resources
   namespace: cicd
 spec:
-  sources:
-    - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
-      targetRevision: main
-      path: istio-system/routing-rules
+  source:
+    repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+    targetRevision: main
+    path: istio-system/routing-rules
+    directory:
+      recurse: true
+
   destination:
     name: ''
     server: 'https://kubernetes.default.svc'
