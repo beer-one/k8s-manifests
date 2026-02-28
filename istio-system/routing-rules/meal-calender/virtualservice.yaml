@@ -21,9 +21,9 @@ spec:
   - name: "api"
     match:
       - uri:
-          prefix: "/api"
+          prefix: "/api/"
     rewrite: 
-      uri: ""
+      uri: "/"
     route:
       - destination:
           host: meal-calender-api.meal-calender.svc.cluster.local
