@@ -1,5 +1,5 @@
 app:
-  image: "beer1/meal-calender-web:dev"
+  image: "beer1/meal-calender-web-ui:dev"
   env:
     - name: VITE_API_BASE_URL
       value: "http://dev.meal-calender.com/api"
