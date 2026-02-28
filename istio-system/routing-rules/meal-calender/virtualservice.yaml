@@ -1,0 +1,36 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: meal-calender
+  namespace: istio-system
+spec:
+  hosts:
+  - "dev.meal-calender.com"
+  gateways:
+  - meal-calender-com
+  http:
+  - name: "image"
+    match:
+      - uri:
+          prefix: "/images"
+    route:
+      - destination:
+          host: meal-calender-api.meal-calender.svc.cluster.local.
+          port: 
+            number: 80
+  - name: "api"
+    match:
+      - uri:
+          prefix: "/api"
+    rewrite: 
+      uri: "/"
+    route:
+      - destination:
+          host: meal-calender-api.meal-calender.svc.cluster.local.
+          port: 
+            number: 80
+  - route:
+    - destination:
+        host: meal-calender-ui.meal-calender.svc.cluster.local.
+        port: 
+          number: 80
