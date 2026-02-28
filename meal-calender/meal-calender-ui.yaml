@@ -7,7 +7,7 @@ app:
   resources:
     requests:
       memory: 128Mi
-    limts:
+    limits:
       memory: 128Mi
   port: 3000
 podLabels: 
