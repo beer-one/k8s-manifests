@@ -1,0 +1,36 @@
+app:
+  image: "beer1/meal-calender-web:dev"
+  env:
+    - name: VITE_API_BASE_URL
+      value: "http://dev.meal-calender.com/api"
+  replicas: 1
+  resources:
+    requests:
+      memory: 128Mi
+    limts:
+      memory: 128Mi
+  port: 3000
+podLabels: 
+  project: meal-calender
+
+probes:
+  readiness:
+    httpGet:
+      path: /
+      port: 3000
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 2
+    successThreshold: 1
+    
+  liveness: 
+    httpGet:
+      path: /
+      port: 3000
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 2
+    successThreshold: 1
+
+service:
+  enabled: true

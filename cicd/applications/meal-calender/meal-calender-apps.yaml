@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: meal-calender-apps
+  namespace: cicd
+spec:
+  generators:
+    - list:
+        elements:
+          - app: meal-calender-ui
+            version: 0.1.1
+          - app: meal-calender-api
+            version: 0.1.1
+  template:
+    metadata:
+      name: "{{ app }}"
+    spec:
+      sources:
+        - repoURL: 'https://beer-one.github.io/charts'
+          targetRevision: "{{ version }}"
+          chart: my-app
+          helm:
+            releaseName: "{{ app }}"
+            valueFiles:
+              - $values/meal-calender/{{ app }}.yaml
+        - repoURL: 'https://github.com/beer-one/k8s-manifests.git'
+          targetRevision: main
+          ref: values
+      destination:
+        name: ''
+        namespace: meal-calender
+        server: 'https://kubernetes.default.svc'
+      project: default
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
